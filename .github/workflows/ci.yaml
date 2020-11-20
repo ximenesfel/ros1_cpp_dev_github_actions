@@ -23,10 +23,10 @@ jobs:
           cd ~/catkin_ws/src
           cp -r $GITHUB_WORKSPACE .
           cd ~/catkin_ws
-          /bin/bash -c "source /opt/ros/melodic/setup.bash && catkin_make -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debug && catkin_make -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debug number_counter_coverage_report"
-          # /bin/bash -c "source /opt/ros/melodic/setup.bash && catkin_make -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debug number_counter_coverage_report"
-          # rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.cleaned
-          # rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.removed
+          /bin/bash -c "source /opt/ros/melodic/setup.bash && catkin_make -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debug"
+          /bin/bash -c "source /opt/ros/melodic/setup.bash && catkin_make number_counter_coverage_report"
+          rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.cleaned
+          rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.removed
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
