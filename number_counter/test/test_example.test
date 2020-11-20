@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="number_counter" type="add_two_ints_server" name="add_two_ints_server_node" />
+  <test time-limit="300" test-name="unit_test_node" pkg="number_counter" type="source_test"/>
+</launch>

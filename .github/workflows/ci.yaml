@@ -1,0 +1,34 @@
+name: CI
+on: [push]
+jobs:    
+  build:
+    runs-on: ubuntu-18.04
+    container: ros:melodic-ros-base
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install catkin & package dependencies
+        run: |
+          cd / && ./ros_entrypoint.sh
+          apt-get update
+          apt-get install -y ros-melodic-rospy-tutorials curl lcov ros-melodic-genpy ros-melodic-code-coverage
+
+      - name: Setup catkin workspace
+        run: |
+          mkdir -p ~/catkin_ws/src
+          cd ~/catkin_ws
+          /bin/bash -c "source /opt/ros/melodic/setup.bash && catkin_make"
+
+      - name: Build package and run unit test
+        run: |
+          cd ~/catkin_ws/src
+          cp -r $GITHUB_WORKSPACE .
+          cd ~/catkin_ws
+          /bin/bash -c "source /opt/ros/melodic/setup.bash && catkin_make -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debug number_counter_coverage_report"
+          rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.cleaned
+          rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.removed
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ~/catkin_ws/build/number_counter
