@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   rospy_tutorials
+  roslint
 )
 
 ## System dependencies are found with CMake's conventions
@@ -114,6 +115,8 @@ if(CATKIN_ENABLE_TESTING AND ENABLE_COVERAGE_TESTING)
   # Add compiler flags for coverage instrumentation before defining any targets
   APPEND_COVERAGE_COMPILER_FLAGS()
 endif()
+
+roslint_cpp()
 
 ###########
 ## Build ##
