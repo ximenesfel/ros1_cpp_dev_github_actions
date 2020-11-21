@@ -9,10 +9,8 @@ jobs:
       - name: Install catkin & package dependencies
         run: |
           cd / && ./ros_entrypoint.sh
-          apt-get update
+          apt-get update && apt-get upgrade
           apt-get install -y  ros-melodic-rospy-tutorials curl lcov python-coverage python-pip ros-melodic-code-coverage gcovr
-          pip install --upgrade pip
-          pip install pyyaml rospkg --ignore-installed
 
       - name: Setup catkin workspace
         run: |
