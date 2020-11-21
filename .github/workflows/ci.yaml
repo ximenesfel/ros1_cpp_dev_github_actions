@@ -24,9 +24,10 @@ jobs:
           cd ~/catkin_ws/src
           cp -r $GITHUB_WORKSPACE .
           cd ~/catkin_ws
+          mkdir -p ~/.ros
           /bin/bash -c "source /opt/ros/melodic/setup.bash && source ~/catkin_ws/devel/setup.bash && catkin build number_counter -v --no-deps --catkin-make-args number_counter_coverage_report"
-          rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.cleaned
-          rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.removed
+          # rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.cleaned
+          # rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.removed
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
