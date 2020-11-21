@@ -24,6 +24,7 @@ jobs:
           cp -r $GITHUB_WORKSPACE .
           mkdir -p ~/.ros
           cd ~/catkin_ws
+          /bin/bash -c "source ~/catkin_ws/devel/setup.bash"
           /bin/bash -c "source /opt/ros/melodic/setup.bash && catkin_make -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debug number_counter_coverage_report"
           rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.cleaned
           rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.removed
