@@ -215,7 +215,7 @@ target_link_libraries(add_two_ints_server ${catkin_LIBRARIES})
 if (CATKIN_ENABLE_TESTING)
   # Add your tests here
   find_package(rostest REQUIRED)
-  add_rostest_gtest(source_test test/test_example.test test/test_example.cpp)
+  add_rostest_gtest(source_test test/test_example.launch test/test_example.cpp)
   target_link_libraries(source_test ${catkin_LIBRARIES})
 
   # Create a target ${PROJECT_NAME}_coverage_report
