@@ -22,7 +22,7 @@ jobs:
         run: |
           cd ~/catkin_ws/src
           cp -r $GITHUB_WORKSPACE .
-          cd ~
+          cd $GITHUB_WORKSPACE
           # /bin/bash -c "source /opt/ros/melodic/setup.bash && cd ~/catkin_ws && catkin_make -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debug"
           /bin/bash -c "source /opt/ros/melodic/setup.bash && cd ~/catkin_ws && catkin_make -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debugake number_counter_coverage_report"
           rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.cleaned
