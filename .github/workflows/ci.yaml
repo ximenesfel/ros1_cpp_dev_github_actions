@@ -8,9 +8,9 @@ jobs:
       - uses: actions/checkout@v1
       - name: Install catkin & package dependencies
         run: |
-          cd / && ./ros_entrypoint.sh
-          apt-get update && apt-get -y upgrade
-          apt-get install -y  ros-melodic-rospy-tutorials curl lcov python-coverage python-pip ros-melodic-code-coverage gcovr
+          # cd / && ./ros_entrypoint.sh
+          apt-get update
+          apt-get install -y ros-melodic-rospy-tutorials curl lcov ros-melodic-code-coverage ros-melodic-genpy
 
       - name: Setup catkin workspace
         run: |
