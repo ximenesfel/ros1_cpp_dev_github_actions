@@ -28,11 +28,11 @@ jobs:
           /bin/bash -c "source ~/catkin_ws/devel/setup.bash"
           /bin/bash -c "source /opt/ros/melodic/setup.bash && catkin_make -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debug number_counter_coverage_report"
           ls -la ~/catkin_ws/build/
-          # rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.cleaned
-          # rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.removed
+          rm ~/catkin_ws/build/ros1_cpp_dev_github_actions/number_counter/number_counter_coverage_report.info.cleaned
+          rm ~/catkin_ws/build/ros1_cpp_dev_github_actions/number_counter/number_counter_coverage_report.info.removed
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          directory: ~/catkin_ws/build/number_counter/
+          directory: ~/catkin_ws/build/ros1_cpp_dev_github_actions/number_counter
