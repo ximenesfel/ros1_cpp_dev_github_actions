@@ -18,14 +18,14 @@ jobs:
         run: |
           mkdir -p ~/catkin_ws/src
           cd ~/catkin_ws
-          /bin/bash -c "source /opt/ros/melodic/setup.bash && catkin config --cmake-args -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debug && catkin build"
+          /bin/bash -c "source /opt/ros/melodic/setup.bash && catkin_make -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debug"
 
       - name: Build package and run unit test
         run: |
           cd ~/catkin_ws/src
           cp -r $GITHUB_WORKSPACE .
           cd ~/catkin_ws
-          /bin/bash -c "source /opt/ros/melodic/setup.bash && cd ~/catkin_ws && catkin build number_counter -v  --catkin-make-args number_counter_coverage_report"
+          /bin/bash -c "source /opt/ros/melodic/setup.bash && cd ~/catkin_ws && catkin_make -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debug number_counter_coverage_report"
           rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.cleaned
           rm ~/catkin_ws/build/number_counter/number_counter_coverage_report.info.removed
 
