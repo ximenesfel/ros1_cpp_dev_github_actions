@@ -1,0 +1,2 @@
+![](https://github.com/ximenesfel/ros1_cpp_dev_github_actions/workflows/CI/badge.svg?branch=main&event=push)
+[![codecov](https://codecov.io/gh/ximenesfel/ros1_cpp_dev_github_actions/branch/main/graph/badge.svg?token=L2fSQslxEg)](https://codecov.io/gh/ximenesfel/ros1_cpp_dev_github_actions)
